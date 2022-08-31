@@ -7,9 +7,9 @@ Toda a infraestrutura será criada via Terraform.
 
 # Terraform
 
-Terraform é tecnologia para uso de infraestrutura como código (IaaC), assim como Cloudformation da AWS. Porém com 
+Terraform é tecnologia para uso de infraestrutura como código (IaaC), assim como Cloudformation da AWS. 
 
-Com Terraform é possível definir infraestrutura para outras clouds como GCP e Azure.
+Porém com Terraform é possível definir infraestrutura para outras clouds como GCP e Azure.
 
 ## Instalação
 
