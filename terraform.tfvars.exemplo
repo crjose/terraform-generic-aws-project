@@ -1,0 +1,13 @@
+# Renomeie este arquivo, ou crie outro, com nome terraform.tfvars
+# Depois adicione os valores desejados para as variáveis abaixo.
+# Isto evitará que sejam solicitados valores para estas variávies 
+# quando forem executados os comandos do terraform.
+
+rds-nome-usuario="nome do admin do RDS"
+rds-senha-usuario="senha do RDS"
+
+sns-email="seu@email.com"
+ec2-tipo-instancia="t2.micro"
+
+domain="http://kagebunshin.com"
+route53-zone = "ABC123CDE"
