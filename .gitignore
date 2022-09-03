@@ -1,3 +1,11 @@
+
+temp/
+
+
+# Packer
+
+image/
+
 # Terraform
 
 package.json

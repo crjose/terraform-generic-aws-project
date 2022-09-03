@@ -5,14 +5,15 @@
   vars = {
     efs_id = aws_efs_file_system.projeto-efs.id
     region = "${var.regiao}",
-    sns_topic_arn = aws_sns_topic.projeto-events.arn
+    sns_topic_arn = aws_sns_topic.projeto-events.arn,
+    docker_compose = var.docker-compose-moodle
   }
 }
 
 
 # Criando uma instância EC2
 resource "aws_instance" "projeto" {
-  ami = "ami-0c4f7023847b90238" # Canonical, Ubuntu, 20.04 LTS
+  ami = var.ec2-ami
   instance_type = "${var.ec2-tipo-instancia}"
   availability_zone = "${var.regiao}a"
   key_name = "${var.ec2-chave-instancia}"

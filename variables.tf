@@ -20,6 +20,17 @@ variable "tag-base" {
 
 # EC2
 
+variable "docker-compose-moodle" {
+  description = "Docker Compose file"
+  type        = string
+}
+
+variable "ec2-ami" {
+  description = "AMI base"
+  type        = string
+  default     = "ami-0c4f7023847b90238" # Canonical, Ubuntu, 20.04 LTS
+}
+
 variable "ec2-tipo-instancia" {
   description = "Tipo da instância do EC2"
   type        = string
@@ -49,7 +60,7 @@ variable "health_check" {
    default = {
       "timeout"  = "10"
       "interval" = "20"
-      "path"     = "/info.php"
+      "path"     = "/"
       "port"     = "80"
       "unhealthy_threshold" = "2"
       "healthy_threshold" = "3"
@@ -61,7 +72,7 @@ variable "health_check" {
 variable "rds-identificador" {
   description = "Tipo da instância do RDS"
   type        = string
-  default     = "ct-oficina"
+  default     = "oficina-ct"
 }
 
 variable "rds-tipo-instancia" {
