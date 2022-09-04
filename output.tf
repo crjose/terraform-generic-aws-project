@@ -52,3 +52,12 @@ output "nome-bucket" {
 output "domain" {
   value = var.domain
 }
+
+output "docker-compose-moodle" {
+  value = data.template_file.docker-compose-file.rendered
+}
+
+output "projeto-user-data-script" {
+  value = data.template_file.projeto-user-data-script.rendered
+}
+

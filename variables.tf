@@ -20,10 +20,10 @@ variable "tag-base" {
 
 # EC2
 
-variable "docker-compose-moodle" {
-  description = "Docker Compose file"
-  type        = string
-}
+# variable "docker-compose-moodle" {
+#   description = "Docker Compose file"
+#   type        = string
+# }
 
 variable "ec2-ami" {
   description = "AMI base"

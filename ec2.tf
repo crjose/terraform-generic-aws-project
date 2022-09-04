@@ -6,7 +6,15 @@
     efs_id = aws_efs_file_system.projeto-efs.id
     region = "${var.regiao}",
     sns_topic_arn = aws_sns_topic.projeto-events.arn,
-    docker_compose = var.docker-compose-moodle
+    docker_compose = data.template_file.docker-compose-file.rendered,
+    rds_dns = aws_db_instance.projeto-rds.domain
+  }
+}
+
+ data "template_file" "docker-compose-file" {
+  template = file("files/docker-compose.yml")
+  vars = {
+    rds_dns = aws_db_instance.projeto-rds.domain
   }
 }
 
@@ -40,6 +48,7 @@ resource "aws_instance" "projeto" {
 
   tags = {
       Name = "${var.tag-base}"
+      Projeto = "Moodle"
   }
 }
 
