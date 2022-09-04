@@ -7,7 +7,7 @@ services:
       - '443:8443'
       - '3306:3306'
     environment:
-      - MOODLE_DATABASE_HOST=${rds_dns}
+      - MOODLE_DATABASE_HOST=RDS_DNS
       - MOODLE_DATABASE_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=projetoadmin
       - MOODLE_DATABASE_NAME=oficinadb

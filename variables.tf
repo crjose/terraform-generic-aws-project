@@ -25,6 +25,12 @@ variable "tag-base" {
 #   type        = string
 # }
 
+# variable "create-elb" {
+#   description = "Indica se deve criar os recursos no LoadBalancer"
+#   type = bool
+#   default = false
+# }
+
 variable "ec2-ami" {
   description = "AMI base"
   type        = string
@@ -129,4 +135,10 @@ variable "domain" {
 variable "route53-zone" {
   description = "ID da zona do domínio no Route 53"
   type = string
+}
+
+variable "has-domain" {
+  description = "Indica se deve criar os recursos no Route53"
+  type = bool
+  default = false
 }
