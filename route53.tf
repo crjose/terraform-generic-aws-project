@@ -1,4 +1,5 @@
-resource "aws_route53_record" "root" {
+resource "aws_route53_record" "www" {
+  count = var.has-domain ? 1 : 0
   zone_id = var.route53-zone
   name    = "www.${var.domain}"
   type    = "A"
@@ -10,7 +11,8 @@ resource "aws_route53_record" "root" {
   }
 }
 
-resource "aws_route53_record" "www" {
+resource "aws_route53_record" "root" {
+  count = var.has-domain ? 1 : 0
   zone_id = var.route53-zone
   name    = var.domain
   type    = "A"

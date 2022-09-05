@@ -1,0 +1,25 @@
+version: '2'
+services:
+  moodle:
+    image: docker.io/bitnami/moodle:4
+    ports:
+      - '80:8080'
+      - '443:8443'
+      - '3306:3306'
+    environment:
+      - MOODLE_DATABASE_HOST=RDS_DNS
+      - MOODLE_DATABASE_PORT_NUMBER=3306
+      - MOODLE_DATABASE_USER=projetoadmin
+      - MOODLE_DATABASE_NAME=oficinadb
+      - MOODLE_DATABASE_PASSWORD=Projeto2022Oficina
+      - MOODLE_DATABASE_TYPE=auroramysql
+    volumes:
+      - /var/www/html:/bitnami/moodle
+      - /var/www/moodledata_data:/bitnami/moodledata
+    networks:
+      - code-network
+    restart: always    
+
+networks:
+    code-network:
+        driver: bridge

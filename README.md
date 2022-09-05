@@ -132,3 +132,4 @@ Mesmo proporcionando a criação dos recursos mínimos para execução do projet
 
 1. [Terraform](https://www.terraform.io/)
 2. [How to setup a basic VPC with EC2 and RDS using Terraform](https://dev.to/rolfstreefkerk/how-to-setup-a-basic-vpc-with-ec2-and-rds-using-terraform-3jij)
+3. [Variáveis Terraform para Packer](https://stackoverflow.com/questions/58054772/how-to-set-a-packer-variable-from-a-terraform-state)

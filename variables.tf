@@ -20,6 +20,18 @@ variable "tag-base" {
 
 # EC2
 
+variable "certificate-arn" {
+  description = "ARN do certificado no Certificate Manager"
+  type        = string
+  # Espefique o valor desta variáel no arquivoterraform.tfvars
+}
+
+variable "ec2-ami" {
+  description = "AMI base"
+  type        = string
+  default     = "ami-0c4f7023847b90238" # Canonical, Ubuntu, 20.04 LTS
+}
+
 variable "ec2-tipo-instancia" {
   description = "Tipo da instância do EC2"
   type        = string
@@ -49,7 +61,7 @@ variable "health_check" {
    default = {
       "timeout"  = "10"
       "interval" = "20"
-      "path"     = "/info.php"
+      "path"     = "/"
       "port"     = "80"
       "unhealthy_threshold" = "2"
       "healthy_threshold" = "3"
@@ -61,7 +73,7 @@ variable "health_check" {
 variable "rds-identificador" {
   description = "Tipo da instância do RDS"
   type        = string
-  default     = "ct-oficina"
+  default     = "oficina-ct"
 }
 
 variable "rds-tipo-instancia" {
@@ -118,4 +130,10 @@ variable "domain" {
 variable "route53-zone" {
   description = "ID da zona do domínio no Route 53"
   type = string
+}
+
+variable "has-domain" {
+  description = "Indica se deve criar os recursos no Route53"
+  type = bool
+  default = false
 }

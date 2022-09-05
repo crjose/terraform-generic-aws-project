@@ -1,8 +1,10 @@
 
+temp/
+*copy*
+
+# Packer
 
 image/
-
-temp/
 
 # Terraform
 

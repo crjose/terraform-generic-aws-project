@@ -5,14 +5,14 @@
   vars = {
     efs_id = aws_efs_file_system.projeto-efs.id
     region = "${var.regiao}",
-    sns_topic_arn = aws_sns_topic.projeto-events.arn
+    sns_topic_arn = aws_sns_topic.projeto-events.arn,
+    rds_addr = aws_db_instance.projeto-rds.address
   }
 }
 
-
 # Criando uma instância EC2
 resource "aws_instance" "projeto" {
-  ami = "ami-0c4f7023847b90238" # Canonical, Ubuntu, 20.04 LTS
+  ami = var.ec2-ami
   instance_type = "${var.ec2-tipo-instancia}"
   availability_zone = "${var.regiao}a"
   key_name = "${var.ec2-chave-instancia}"
@@ -102,7 +102,7 @@ resource "aws_lb_listener" "lb_listner_https" {
   port              = "443"
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = "arn:aws:acm:us-east-1:930779231265:certificate/783455de-1615-4650-8c01-71841a417a04"
+  certificate_arn   = var.certificate-arn
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.tg-projeto.arn
