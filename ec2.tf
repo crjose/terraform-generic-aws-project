@@ -39,7 +39,6 @@ resource "aws_instance" "projeto" {
 
   tags = {
       Name = "${var.tag-base}"
-      Projeto = "Moodle"
   }
 }
 
@@ -103,7 +102,7 @@ resource "aws_lb_listener" "lb_listner_https" {
   port              = "443"
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = "arn:aws:acm:us-east-1:930779231265:certificate/783455de-1615-4650-8c01-71841a417a04"
+  certificate_arn   = var.certificate-arn
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.tg-projeto.arn

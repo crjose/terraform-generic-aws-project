@@ -3,16 +3,6 @@ sudo apt -y update
 sudo apt -y install unzip
 sudo apt install locales-all && sudo locale-gen
 
-# echo '############### Instalando NGINX ################'
-
-# sudo apt -y install nginx
-
-# sudo systemctl stop nginx.service
-# sudo systemctl start nginx.service
-# sudo systemctl enable nginx.service
-
-# systemctl status nginx
-
 echo '############### Instalando AWS CLI ################'
 
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -30,6 +20,7 @@ sudo mkdir -p /var/www/html
 sudo mkdir -p /var/www/moodledata_data
 sudo mkdir -p /home/ubuntu/devops
 
+# TODO: Encontrar uma forma melhor de salvar o arquivo docker-compose.yml no servidor
 docker_compose="version: '2'\nservices:\n
 %20moodle:\n
 %20%20image: docker.io/bitnami/moodle:4\n
@@ -61,14 +52,6 @@ region="${region}"
 rds="${rds_addr}"
 
 echo -e $docker_compose > /home/ubuntu/devops/docker-compose.yml
-
-echo "---> RDS DNS"
-echo $rds
-echo "---> EFS"
-echo $efs_id
-echo "---> REGION "
-echo $region
-echo "---> REGION "
 
 sudo sed -i "s/RDS_DNS/$rds/g" /home/ubuntu/devops/docker-compose.yml
 sudo sed -i 's/%20/ /g' /home/ubuntu/devops/docker-compose.yml

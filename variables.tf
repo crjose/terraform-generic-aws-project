@@ -20,16 +20,11 @@ variable "tag-base" {
 
 # EC2
 
-# variable "docker-compose-moodle" {
-#   description = "Docker Compose file"
-#   type        = string
-# }
-
-# variable "create-elb" {
-#   description = "Indica se deve criar os recursos no LoadBalancer"
-#   type = bool
-#   default = false
-# }
+variable "certificate-arn" {
+  description = "ARN do certificado no Certificate Manager"
+  type        = string
+  # Espefique o valor desta variáel no arquivoterraform.tfvars
+}
 
 variable "ec2-ami" {
   description = "AMI base"

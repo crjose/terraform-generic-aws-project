@@ -49,10 +49,6 @@ output "nome-bucket" {
   value = var.nome-bucket
 }
 
-output "domain" {
-  value = var.domain
-}
-
 output "projeto-user-data-script" {
   value = data.template_file.projeto-user-data-script.rendered
 }
@@ -66,10 +62,14 @@ output "s3-user-secret" {
   sensitive = true
 }
 
-output "moodle-login" {
+output "domain" {
+  value = var.domain
+}
+
+output "login" {
   value = "user"
 }
 
-output "moodle-password" {
+output "password" {
   value = "bitnami"
 }
