@@ -1,6 +1,7 @@
 #!/bin/bash
 sudo apt -y update
 sudo apt -y install unzip
+sudo apt install locales-all && sudo locale-gen
 
 # echo '############### Instalando NGINX ################'
 

@@ -57,3 +57,19 @@ output "projeto-user-data-script" {
   value = data.template_file.projeto-user-data-script.rendered
 }
 
+output "s3-user-id" {
+  value = aws_iam_access_key.s3_user_key.id
+}
+
+output "s3-user-secret" {
+  value = aws_iam_access_key.s3_user_key.secret
+  sensitive = true
+}
+
+output "moodle-login" {
+  value = "user"
+}
+
+output "moodle-password" {
+  value = "bitnami"
+}
