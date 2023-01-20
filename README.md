@@ -2,7 +2,9 @@
 
 Este projeto permite criar a infraestrutura mínima na AWS para execução de carga de trabalho baseada em uma única instância EC2.
 A proposta é criar todos os recursos necessários, como VPC, Subnet, Route Tables, EC2, RDS, S3 etc, para rodar um projeto em uma instância Ubuntu, 20.04 LTS. 
-O projeto a ser executado neste exemplo é o [Moodle](https://moodle.org/). 
+
+O projeto a ser executado neste exemplo é apenas um servidor web Apache com PHP.
+
 Toda a infraestrutura será criada via Terraform.
 
 # Terraform
@@ -58,6 +60,7 @@ Para evitar expor dados sensíveis no git, como senha do banco de dados, será p
 
 No arquivo ``terraform.tfvars`` redefina os valores das variáveis. Perceba que será necessário ter um domínio já no Route53 para que seja fornecido o Zone ID.
 
+Todas as variáveis possíveis para este arquivo podem ser vistas no arquivo ``variables.tf``. Apenas algumas delas foram utilizadas no exemplo.
 
 ## Aplicando a infra definida
 
@@ -71,12 +74,12 @@ Neste repositório não estamos versionando este arquivo por se tratar de um rep
 
 ###  Verificando o que será criado, removido ou alterado
 ```
-terraorm plan
+terraform plan
 ```
 
 ###  Aplicando a infraestrutura definida
 ```
-terraorm apply
+terraform apply
 ```
 ou, para confirmar automáticamente.
 ```
@@ -100,11 +103,11 @@ terraform destroy --auto-approve
 
 Após executar o ``terraform apply``, é apresentado no terminal quantos recursos forma adicionados, alterados ou destruídos na sua infra.
 
-No nosso código adicionamos mais algumas informações de saída (outputs) necessárias para acessarmos o Moodle criado. Observe abaixo.
+No nosso código adicionamos mais algumas informações de saída (outputs) necessárias para acessarmos os recursos criados, como o banco de dados. Observe abaixo.
 
-O acesso ao Moodle será pelo endereço apresentado no ``projeto-dns``, que também pode ser utilizado para acessar a instância.
+O acesso à aplicação será pelo endereço apresentado no ``projeto-dns``, que também pode ser utilizado para acessar a instância.
 
-O endereço *host* para o banco de dados RDS é apresentado em ``projeto-rds-addr``. Esta informação será necessária no primeiro acesso ao Moodle.
+O endereço *host* para o banco de dados RDS é apresentado em ``projeto-rds-addr``. 
 
 Ser quiser observar os parâmetros do PHP no servidor acesse o endereço apresentado em ``server``.
 
@@ -126,7 +129,7 @@ server = "http://ec2-44-201-145-193.compute-1.amazonaws.com/info.php"
 # Considerações finais
 
 Este é um projeto para experimentações e estudo do Terraform. 
-Mesmo proporcionando a criação dos recursos mínimos para execução do projeto na AWS, é desaconselhado o uso deste projeto para implantação de cargas de trabaçho em produção. 
+Mesmo proporcionando a criação dos recursos mínimos para execução do projeto na AWS, é desaconselhado o uso deste projeto para implantação de cargas de trabalho em ambiente produtivo. 
 
 # Referências
 

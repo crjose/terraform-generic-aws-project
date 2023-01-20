@@ -65,11 +65,3 @@ output "s3-user-secret" {
 output "domain" {
   value = var.domain
 }
-
-output "login" {
-  value = "user"
-}
-
-output "password" {
-  value = "bitnami"
-}

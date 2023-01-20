@@ -15,7 +15,7 @@ variable "profile" {
 variable "tag-base" {
   description = "Nome utilizado para nomenclaruras no projeto"
   type        = string
-  default     = "ct_oficina"
+  default     = "projeto"
 }
 
 # EC2
@@ -73,7 +73,7 @@ variable "health_check" {
 variable "rds-identificador" {
   description = "Tipo da instância do RDS"
   type        = string
-  default     = "oficina-ct"
+  default     = "projeto-db"
 }
 
 variable "rds-tipo-instancia" {
@@ -85,7 +85,7 @@ variable "rds-tipo-instancia" {
 variable "rds-nome-banco" {
   description = "Nome do schema criado inicialmente para usar no Projeto"
   type        = string
-  default     = "oficinadb"
+  default     = "projeto_db"
 }
 
 variable "rds-nome-usuario" {
@@ -118,7 +118,7 @@ variable "sns-email" {
 variable "nome-bucket" {
   description = "Nome do bucket para configurar no Projeto"
   type = string
-  default = "ct-oficina-files-op5"  # Como o bucket deve ser unico em toda a AWS, sugiro modifica este nome para evitar conflito.
+  default = "projeto-files"  # Como o bucket deve ser unico em toda a AWS, sugiro modifica este nome para evitar conflito.
 }
 
 variable "domain" {
@@ -132,8 +132,14 @@ variable "route53-zone" {
   type = string
 }
 
+variable "create-domain-www" {
+  description = "Indica o record www no Route53"
+  type = bool
+  default = false
+}
+
 variable "has-domain" {
-  description = "Indica se deve criar os recursos no Route53"
+  description = "Indica se deve criar o domínio especificado no Route53"
   type = bool
   default = false
 }

@@ -1,7 +1,7 @@
 resource "aws_route53_record" "www" {
-  count = var.has-domain ? 1 : 0
+  count = var.create-domain-www ? 1 : 0
   zone_id = var.route53-zone
-  name    = "www.${var.domain}"
+  name    = "www"
   type    = "A"
 
   alias {

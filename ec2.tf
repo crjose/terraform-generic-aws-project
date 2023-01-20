@@ -102,7 +102,7 @@ resource "aws_lb_listener" "lb_listner_https" {
   port              = "443"
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = var.certificate-arn
+  certificate_arn   = var.has-domain ? var.certificate-arn : ""  # Testar 
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.tg-projeto.arn

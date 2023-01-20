@@ -3,11 +3,43 @@
 # Isto evitará que sejam solicitados valores para estas variávies 
 # quando forem executados os comandos do terraform.
 
-rds-nome-usuario="nome do admin do RDS"
-rds-senha-usuario="senha do RDS"
+rds-identificador = "nome do RDS"
+rds-nome-usuario = "nome do admin do RDS"
+rds-senha-usuario = "senha do RDS"
+rds-nome-banco = "nome do banco padrão"
+rds-tipo-instancia = "db.t3.micro"
 
-sns-email="seu@email.com"
-ec2-tipo-instancia="t2.micro"
+# Assim que iniciar o processo, você receberá um email
+# autorizando o SNS. Aceite!
+# ocê receberá um email quando finalizar a instalação
+sns-email="email para para cadastrar no SNS"
 
-domain="http://kagebunshin.com"
-route53-zone = "ABC123CDE"
+ec2-tipo-instancia="t3a.micro" # 2 vCPU, 1 GB
+certificate-arn="especique o arn do certificado que vai usar"
+
+# Como o bucket deve ser unico em toda a AWS, 
+# sugiro modifica este nome para evitar conflito.
+nome-bucket = "meu_novo_bucket"  
+
+# Se true, cria a entrada www na zona especificada.
+create-domain-www=false
+
+# Se tem um domínio no Route53 especifique aqui
+# e informe a zona e o subdomínio a ser criado.
+has-domain=true
+domain="oficina8" # subdominio
+route53-zone = "XPTOETALECOISA"
+
+# Nome do profile criado com AWS CLI com as
+# credenciais do IAM.
+profile = "projeto"
+
+# Especifique o nome da tag padrão utilizada nos nomes dos serviços
+tag-base = "projeto"
+
+# Especifique o nome da chave pem para associar a instância
+ec2-chave-instancia = "projeto"
+
+# Especifique o nome do arquivo para carregar no user_data
+# caso deseje um diferente do padrão.
+arquivo-user-data = "projeto_user_data.sh"
